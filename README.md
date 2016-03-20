@@ -1,0 +1,1 @@
+#Straddling cehckerboard encoder/decoder
