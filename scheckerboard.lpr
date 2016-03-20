@@ -31,6 +31,7 @@ begin
   writeln(testtext + '='+ SpyGrouping(codetest.Encode(testtext)) );
   rec:= codetest.Encode(testtext);
   writeln( codetest.Decode(rec));
+  writeln( codetest.Decode('883471923743982749836817864513675244213553135669334541'));
 
 end.
 

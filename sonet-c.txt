@@ -1,10 +1,13 @@
 title
-	SONET-C table
+	SONET-C
 
 description
-	Cyrillic and Latin encryption table, main codepage is Cyrillic. See our other tables!
+
+	Cyrillic and Latin encryption table, same as SONET-L, 
+        but Cyrillic is main codepage, Latin is alternative one.
+
 letters
-	abcdefghijklmnopqrstuvwxyzабвгдеёжзиклмнопрстуфхцчшщыъьэюя
+	abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщыъьэюя
 
 codetable
 

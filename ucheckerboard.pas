@@ -316,7 +316,7 @@ function TCodeTable.Decode(txt:ansistring):ansistring;
        //we're messed up if...
        if blength>2 then
         begin
-         writeln('We''re messed up, sir!');
+         writeln('We''re messed up, sir!'); //I was not able to
          Decode:= rz+'...(unciphered)';
          exit
         end;
