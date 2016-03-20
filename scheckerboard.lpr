@@ -6,11 +6,11 @@ uses
   {$IFDEF UNIX}{$IFDEF UseCThreads}
   cthreads,
   {$ENDIF}{$ENDIF}
-  Classes, ucheckerboard
+  Classes, ucheckerboard, uspybeauty
   { you can add units after this };
 var
   codetest:TCodeTable;
-  testtext:ansistring= 'Второй год Штирлиц отмечал 1 мая в Берлине';
+  testtext:ansistring= 'Ye, that good, old ale!';
   rec:ansistring;
   wt:unicodestring;
   //tf:TLresource;
@@ -28,12 +28,9 @@ begin
 
 
   codetest.CreateFromStrings(b);
-  writeln(testtext + '='+ codetest.Encode(testtext));
+  writeln(testtext + '='+ SpyGrouping(codetest.Encode(testtext)) );
   rec:= codetest.Encode(testtext);
   writeln( codetest.Decode(rec));
-  writeln(length(testtext));
-  writeln(length( Utf8decode(testtext) ));
-  wt:= Utf8decode(testtext);
-  writeln(length(wt));
+
 end.
 

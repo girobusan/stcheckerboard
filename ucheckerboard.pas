@@ -32,6 +32,8 @@ type
 
   end;
 
+
+
 implementation
 
 procedure TCodeTable.CreateFromStrings(strs:tStringList);
@@ -208,7 +210,7 @@ function TCodeTable.Encode(itxt:ansistring):ansistring;
        if cpage1 then r+=cp1enc[b];
        if (not cpage1) then
          begin
-         if(cp2enc[b]='') then r+=cp1enc[b] else  r+=cp2enc[b];
+         if(cp2enc[b]='') then r+=cp1enc[b] else  r+=cp2enc[b];  //not so dumb
          end
       end;//end main loop
     Encode:=r
@@ -271,11 +273,9 @@ function TCodeTable.Decode(txt:ansistring):ansistring;
        end;//digits block ended here
 
       //SPECIAL SYMBOLS
-      //writeln('we got "' + cp1dec[buff] +'"');
-      //writeln('it starts with '+ );
       if (cp1dec[buff]<>'') and (cp1dec[buff][1]='!') and (length(cp1dec[buff])>1) then
        begin
-        writeln('it''s special "' + cp1dec[buff] +'"');
+        //writeln('it''s special "' + cp1dec[buff] +'"');
         case cp1dec[buff] of
           '!FIG'  : isDigits:=true;
           '!SPACE': rz+=' ';
@@ -303,9 +303,9 @@ function TCodeTable.Decode(txt:ansistring):ansistring;
         blength:=1;
         Continue  //...it was.
        end;
-      if (cp2dec[buff]= '') and (cp1dec[buff]<> '') then // not iscp1 then  //let me guess...
+      if (cp2dec[buff]= '') and (cp1dec[buff]<> '') then //let me guess...
        begin
-        writeln('punctuation?' + buff);
+        //writeln('punctuation?' + buff);
         rz+= cp1dec[buff];
         position:=position + blength;
         blength:=1;
