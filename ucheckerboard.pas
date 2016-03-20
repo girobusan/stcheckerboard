@@ -235,7 +235,7 @@ function TCodeTable.Decode(txt:ansistring):ansistring;
       buff:=copy(wst,position,blength);
 
       //DIGITS
-      //check, if we're in the digits block
+      //check, if we're already in the digits block
       if isDigits then
        begin
        if blength<2 then
@@ -252,9 +252,9 @@ function TCodeTable.Decode(txt:ansistring):ansistring;
         continue
         end
        else
-        isDigits:=False; //certainly, it's not a digit
+        isDigits:=False; //certainly, it's not a digit.
         blength:=1;      //we have to start new round
-        if buff[1] = cp1enc['!FIG'] then  //if figures designator encoded with one digit
+        if buff[1] = cp1enc['!FIG'] then  //if fig. designator encoded with one digit
          begin
          position :=position +1;
          Continue;
@@ -266,9 +266,12 @@ function TCodeTable.Decode(txt:ansistring):ansistring;
          end;
 
         (*something goes wrong with the digits, if we've reached this line:
-          digits block ended, but designator not found.
-          Digits designator must consist either of one digit, or two different ones*)
-          position:=position + 0  //try to decrypt as letter, GIVE USER A WARNING!
+          digits block ended, but designator not found. Digits designator must
+          consist either of one digit, or two different ones*)
+          position:=position + 0  (*We'll try to decrypt as letter, GIVE A WARNING!
+          Actually, it means, that in some cases it's possible not to terminate
+          digits blocks. But only if the next code can not be misdecoded
+          as digits*)
 
        end;//digits block ended here
 
